@@ -5,7 +5,6 @@ CREATE TABLE Endereco (
     cidade VARCHAR2(50),
     bairro VARCHAR2(50),
     rua VARCHAR2(50),
-    numero VARCHAR2(10)
 );
 
 /* 

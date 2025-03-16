@@ -202,7 +202,7 @@ INSERT INTO Estande (id_estande, categoria, nome) VALUES
     (674859, 'Tecnologia e Entretenimento', 'Jogos Eletrônicos Express'),
     (509387, 'Tecnologia e Entretenimento', 'Espaço Gadget'),
     (283746, 'Tecnologia e Entretenimento', 'Cinema 4D Zone'),
-    (194857, 'Tecnologia e Entretenimento', 'Robótica Inovadora'),
+    (194257, 'Tecnologia e Entretenimento', 'Robótica Inovadora'),
     (938472, 'Tecnologia e Entretenimento', 'Inovação em Entretenimento'),
     (837465, 'Tecnologia e Entretenimento', 'Fábrica de Ideias Tech'),
     (572610, 'Tecnologia e Entretenimento', 'Mundo Geek & Tech'),
@@ -217,7 +217,7 @@ INSERT INTO Estande (id_estande, categoria, nome) VALUES
     (610374, 'Cultura Pop', 'Aventuras Mangá'),
     (847562, 'Cultura Pop', 'Fantasia em Quadrinhos'),
     (856109, 'Cultura Pop', 'Mangá Express'),
-    (321047, 'Cultura Pop', 'Universo Pop em HQ'),
+    (321027, 'Cultura Pop', 'Universo Pop em HQ'),
     (462813, 'Cultura Pop', 'Mundo Geek em Quadrinhos'),
     -- Estandes de Arte e Design
     (591074, 'Arte e Design', 'Estúdio de Arte Moderna'),
@@ -246,14 +246,14 @@ INSERT INTO Estande (id_estande, categoria, nome) VALUES
     (937261, 'Educação e Conhecimento', 'Descobertas Educativas'),
     (465193, 'Educação e Conhecimento', 'Rumo ao Saber'),
     -- Estandes de Atividades Interativas
-    (438572, 'Atividades Interativas', 'Zona Interativa'),
+    (438522, 'Atividades Interativas', 'Zona Interativa'),
     (387859, 'Atividades Interativas', 'Experiências em Ação'),
-    (579462, 'Atividades Interativas', 'Tech Playground'),
+    (579412, 'Atividades Interativas', 'Tech Playground'),
     (948573, 'Atividades Interativas', 'Jogos do Futuro'),
     (194857, 'Atividades Interativas', 'Mundo Interativo'),
-    (837465, 'Atividades Interativas', 'Inovações Lúdicas'),
-    (572610, 'Atividades Interativas', 'Aventuras Virtuais'),
-    (610374, 'Atividades Interativas', 'Zona dos Drones');
+    (817465, 'Atividades Interativas', 'Inovações Lúdicas'),
+    (571610, 'Atividades Interativas', 'Aventuras Virtuais'),
+    (610274, 'Atividades Interativas', 'Zona dos Drones');
 
 INSERT INTO Atividade (id_atividade, nome, categoria, capacidade) VALUES
     --ATIVIDADES DE TECNOLOGIA E ENTRETENIMENTO
@@ -347,25 +347,25 @@ INSERT INTO Compra (cpf_participante, id_produto, id_estande) VALUES
     ('37084430555', 38746293, 572610);
 
 -- POVOANDO RESERVA
-INSERT INTO Reserva (cpf_organizador, geolocalizacao_local, id_atividade, data_alocacao) VALUES
-    ('96578608494', '-8.060453026527536, -34.87198721705985', 6748593, TO_TIMESTAMP('2024-10-18 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.058430611618816, -34.87028979438143', 9384728, TO_TIMESTAMP('2024-10-20 14:30:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.06496555883409, -34.87370051960102', 8572639, TO_TIMESTAMP('2024-10-21 20:15:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.059687951354022, -34.87248273033102', 1938475, TO_TIMESTAMP('2024-10-19 16:45:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('96578608494', '-8.064273627791707, -34.87227855868209', 3129478, TO_TIMESTAMP('2024-10-18 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.063834721071009, -34.871483925535266', 2639485, TO_TIMESTAMP('2024-10-20 17:30:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.062657803028308, -34.87320498880049', 4729384, TO_TIMESTAMP('2024-10-19 11:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('96578608494', '-8.061366617867543, -34.87163863051441', 8561094, TO_TIMESTAMP('2024-10-21 15:45:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.063102220491071, -34.87392490573505', 7610374, TO_TIMESTAMP('2024-10-18 19:30:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('96578608494', '-8.065279371367714, -34.873522732390576', 1948572, TO_TIMESTAMP('2024-10-19 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.061664249917577, -34.87186672923007', 8475621, TO_TIMESTAMP('2024-10-21 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('23322076431', '-8.06151938006917, -34.87244781564648', 2938476, TO_TIMESTAMP('2024-10-20 13:45:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.062996717593679, -34.873333734247254', 4650192, TO_TIMESTAMP('2024-10-21 10:15:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('96578608494', '-8.064273627791707, -34.87227855868209', 5910742, TO_TIMESTAMP('2024-10-18 18:30:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('96578608494', '-8.060039281442343, -34.87009954648337', 9485726, TO_TIMESTAMP('2024-10-20 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.062657803028308, -34.87320498880049', 4628135, TO_TIMESTAMP('2024-10-21 15:00:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.062465105915596, -34.87086439802587', 7465910, TO_TIMESTAMP('2024-10-18 13:30:00', 'YYYY-MM-DD HH24:MI:SS')),
-    ('50998999431', '-8.062657803028308, -34.87320498880049', 6103745, TO_TIMESTAMP('2024-10-19 11:30:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO Reserva (cpf_organizador, local_id, id_atividade, data_alocacao) VALUES
+    ('96578608494', 343, 6748593, TO_TIMESTAMP('2024-10-18 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 783, 9384728, TO_TIMESTAMP('2024-10-20 14:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 532, 8572639, TO_TIMESTAMP('2024-10-21 20:15:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 983, 1938475, TO_TIMESTAMP('2024-10-19 16:45:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('96578608494', 439, 3129478, TO_TIMESTAMP('2024-10-18 12:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 218, 2639485, TO_TIMESTAMP('2024-10-20 17:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 298, 4729384, TO_TIMESTAMP('2024-10-19 11:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('96578608494', 926, 8561094, TO_TIMESTAMP('2024-10-21 15:45:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 121, 7610374, TO_TIMESTAMP('2024-10-18 19:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('96578608494', 912, 1948572, TO_TIMESTAMP('2024-10-19 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 482, 8475621, TO_TIMESTAMP('2024-10-21 16:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('23322076431', 230, 2938476, TO_TIMESTAMP('2024-10-20 13:45:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 764, 4650192, TO_TIMESTAMP('2024-10-21 10:15:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('96578608494', 439, 5910742, TO_TIMESTAMP('2024-10-18 18:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('96578608494', 123, 9485726, TO_TIMESTAMP('2024-10-20 14:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 298, 4628135, TO_TIMESTAMP('2024-10-21 15:00:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 321, 7465910, TO_TIMESTAMP('2024-10-18 13:30:00', 'YYYY-MM-DD HH24:MI:SS')),
+    ('50998999431', 298, 6103745, TO_TIMESTAMP('2024-10-19 11:30:00', 'YYYY-MM-DD HH24:MI:SS'));
 
 -- POVOANDO MINISTRA
 INSERT INTO Ministra (cpf_palestrante, id_atividade) VALUES

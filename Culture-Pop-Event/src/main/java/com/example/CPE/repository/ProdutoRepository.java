@@ -1,0 +1,10 @@
+package com.example.CPE.repository;
+
+import com.example.CPE.entity.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
+public interface ProdutoRepository extends JpaRepository<Produto, Integer> {
+    List<Produto> findByCategoria(String categoria);
+    List<Produto> findByPrecoLessThan(Double preco);
+}

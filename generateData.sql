@@ -94,3 +94,97 @@ INSERT INTO Participante (cpf, nome, email, telefone, cep) VALUES
 ('22778899011', 'Mariana Santos', 'mariana.s@hotmail.com', '(82) 97654-3210', '57303-470'),
 ('33889901122', 'Eduardo Lima', 'eduardo.l@yahoo.com.br', '(82) 96543-2109', '41760-110'),
 ('44990011233', 'Camila Alves', 'camila_alves@gmail.com', '(82) 95432-1098', '49500-000');
+
+-- POVOANDO ORGANIZADOR
+INSERT INTO Organizador(cpf_participante, cargo, departamento, cpf_supervisor) VALUES 
+('96578608494', 'Supervisor', 'Tecnologia', NULL),
+('50998999431', 'Supervisor', 'Comunicação', NULL),
+('23322076431', 'Supervisor', 'Infraestrutura', NULL),
+-- supervisionados por 96578608494 (Maria Heloísa)
+('28824388426', 'Desenvolvedor Full Stack', 'Tecnologia', '96578608494'),
+('51715625471', 'Gerente de Banco de Dados', 'Tecnologia', '96578608494'),
+('51359753575', 'Designer UX/UI', 'Tecnologia', '96578608494'),
+('22778899011', 'Gerente de QA', 'Tecnologia', '96578608494'),
+--supervisionados por 50998999431 (Tiago Moraes)
+('95501849437', 'Jornalista', 'Comunicação', '50998999431'),
+('53839259452', 'Publicitário', 'Comunicação', '50998999431'),
+('94974915495', 'Gerente de parcerias', 'Comunicação', '50998999431'),
+('67890123456', 'Social Media', 'Comunicação', '50998999431'),
+--supervisionados por 23322076431 (Gustavo Acir)
+('34934945482', 'Vistoria de palco', 'Infraestrutura', '23322076431'),
+('57954819477', 'Gerência de estande', 'Infraestrutura', '23322076431'),
+('86943630385', 'Alocação de atividades', 'Infraestrutura', '23322076431'),
+('76142319452', 'Direcionamento de produtos', 'Infraestrutura', '23322076431');
+
+-- POVOANDO PALESTRANTE
+INSERT INTO Palestrante(cpf_participante, empresa_vinculo) VALUES 
+('23456789012', 'Tempest'),
+('33889901122', 'NeuroTech'),
+('44990011233', 'Avanade'),
+('11223344556', 'Visagio'),
+('56789012345', 'Insole'),
+('26918297406', 'Cesar'),
+('44882200534', 'Cesar'),
+('16677684415', 'Loomi'),
+('10556677889', 'CIn - UFPE'),
+('99445566778', 'Liferay');
+
+-- POVOANDO OUVINTE
+INSERT INTO Ouvinte(cpf_participante, numero_do_ingresso) VALUES 
+('30706092449', 387462938472981),
+('11121530397', 129837465019283),
+('11667788990', 948572610374584),
+('90533343356', 765193847562137),
+('30291986420', 312947856109438),
+('34934945482', 674859321047659), 
+('76142319452', 509387462813579), 
+('37084430555', 283746591074286), 
+('12345678901', 194857263948573), 
+('67890123456', 938472819283746), 
+('90123456789', 837465019283745), 
+('50998999431', 572610374584937), 
+('89012345678', 193847562137465), 
+('28824388426', 947856109438572), 
+('51359753575', 859321047659387), 
+('89916311501', 387462813579462), 
+('26918297406', 746591074286938), 
+('53839259452', 857263948573194), 
+('77223344556', 472938472981837), 
+('28831620347', 746501928374657), 
+('08342995429', 847562137465193), 
+('88334455667', 856109438572947), 
+('56789012345', 321047659387859), 
+('78901234567', 462813579462387),
+('33889901122', 591074286938746),
+('01382270470', 938472938472938),
+('22778899011', 472938472981837);
+
+-- POVOANDO PRODUTO
+INSERT INTO Produto VALUES (38746293, 'Camiseta C''In''Play', 29.99, 'Vestuário', 100);
+INSERT INTO Produto VALUES (12983746, 'Boné C''In''Play', 19.99, 'Acessórios', 75);
+-- Produtos de estandes de Tecnologia
+INSERT INTO Produto VALUES (94857261, 'Fone de Ouvido Bluetooth', 39.99, 'Áudio', 50);
+INSERT INTO Produto VALUES (76519384, 'Fone de Ouvido com Fio', 19.99, 'Áudio', 30);
+INSERT INTO Produto VALUES (31294785, 'Power Bank 10000mAh', 29.99, 'Utilitários', 40);
+INSERT INTO Produto VALUES (67485932, 'Mouse sem Fio', 24.99, 'Periféricos', 25);
+INSERT INTO Produto VALUES (50938746, 'Teclado Mecânico', 59.99, 'Periféricos', 20);
+-- Produtos de Cultura pop
+INSERT INTO Produto VALUES (28374659, 'Quadrinho Marvel: Homem-Aranha #1', 12.99, 'Quadrinhos', 50);
+INSERT INTO Produto VALUES (19485726, 'Mangá Naruto Vol. 1', 9.99, 'Mangás', 40);
+INSERT INTO Produto VALUES (93847281, 'Blu-ray Avengers: Endgame', 24.99, 'Filmes', 30);
+INSERT INTO Produto VALUES (83746501, 'DVD Stranger Things - Temporada 1', 19.99, 'Séries', 25);
+INSERT INTO Produto VALUES (57261037, 'Action Figure Star Wars: Darth Vader', 34.99, 'Colecionáveis', 20);
+INSERT INTO Produto VALUES (19384756, 'Caneca com Logo do Batman', 12.99, 'Acessórios', 35);
+-- Produtos de Arte e Design
+INSERT INTO Produto VALUES (94785610, 'Pintura em Aquarela "Amanhecer"', 49.99, 'Arte', 15);
+INSERT INTO Produto VALUES (85932104, 'Escultura Abstrata em Madeira', 79.99, 'Design', 10);
+INSERT INTO Produto VALUES (38746281, 'Poster Starry Night - Versão Star Wars', 14.99, 'Arte', 30);
+INSERT INTO Produto VALUES (74659107, 'Print Canvas Batman: O Cavaleiro das Trevas', 39.99, 'Design', 20);
+INSERT INTO Produto VALUES (85726394, 'Curso Online de Design Gráfico', 59.99, 'Curso', 25);
+-- Produtos de Educação e conhecimento
+INSERT INTO Produto VALUES (47293847, 'Livro: "A Era da Informação"', 29.99, 'Livro', 60);
+INSERT INTO Produto VALUES (74650192, 'Livro: "Design de Jogos: Teoria e Prática"', 39.99, 'Livro', 45);
+INSERT INTO Produto VALUES (61037458, 'Livro: "Introdução à Animação Digital"', 27.99, 'Livro', 55);
+INSERT INTO Produto VALUES (84756213, 'Livro: "Desenvolvimento Web Moderno"', 34.99, 'Livro', 50);
+INSERT INTO Produto VALUES (85610943, 'Enciclopédia de Tecnologia e Inovação', 49.99, 'Livro', 30);
+INSERT INTO Produto VALUES (32104765, 'Dicionário de Termos de Tecnologia', 19.99, 'Livro', 70);

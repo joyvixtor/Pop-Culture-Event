@@ -55,8 +55,8 @@ CREATE TABLE Produto (
 -- TABELA ESTANDE
 CREATE TABLE Estande (
     id_estande INT PRIMARY KEY,
-    nome VARCHAR2(100) NOT NULL,
     categoria VARCHAR2(50),
+    nome VARCHAR2(100) NOT NULL
 );
 
 -- TABELA ATIVIDADE
@@ -64,16 +64,15 @@ CREATE TABLE Estande (
 CREATE TABLE Atividade (
     id_atividade SERIAL PRIMARY KEY,
     nome VARCHAR2(100) NOT NULL,
-    categoria VARCHAR2(50) NOT NULL,
-    id_local INTEGER REFERENCES Local(id_local),
+    categoria VARCHAR2(50) NOT NULL
 );
 
 -- TABELA LOCAL
-CREATE TABLE Local (
+CREATE TABLE LocalEvento (
     id_local INT PRIMARY KEY,
+    geolocalizacao VARCHAR2(100),
     nome VARCHAR2(100) NOT NULL,
     capacidade INTEGER NOT NULL,
-    geolocalizacao VARCHAR2(100),
 );
 
 /* 
@@ -84,33 +83,39 @@ CREATE TABLE Local (
     Estande e Local (RESERVA)
 */
 
--- RELACIONAMENTO MINISTRA
-CREATE TABLE Ministra(
-    cpf_palestrante VARCHAR2(11) REFERENCES Palestrante(cpf_participante),
-    id_atividade INTEGER REFERENCES Atividade(id_atividade),
-    PRIMARY KEY (cpf_palestrante, id_atividade)
+-- Criação do relacionamento N:N Ministra
+CREATE TABLE Ministra (
+    cpf_palestrante VARCHAR2(11) PRIMARY KEY,
+    id_atividade INT,
+    CONSTRAINT fk_ministra_palestrante FOREIGN KEY (cpf_palestrante) REFERENCES Participante(cpf),
+    CONSTRAINT fk_ministra_atividade FOREIGN KEY (id_atividade) REFERENCES Atividade(id_atvd)
 );
 
--- RELACIONAMENTO PARTICIPA
-CREATE TABLE Participa(
-    cpf_ouvinte VARCHAR2(11) REFERENCES Ouvinte(cpf_participante),
-    id_atividade INTEGER REFERENCES Atividade(id_atividade),
-    PRIMARY KEY (cpf_ouvinte, id_atividade)
+-- Criação do relacionamento N:N Participa (Atividade-Ouvinte)
+CREATE TABLE Participa (
+    cpf_ouvinte VARCHAR2(11),
+    id_atividade INT,
+    CONSTRAINT fk_participa_ouvinte FOREIGN KEY (cpf_ouvinte) REFERENCES Participante(cpf),
+    CONSTRAINT fk_participa_atividade FOREIGN KEY (id_atividade) REFERENCES Atividade(id_atvd)
 );
 
 -- RELACIONAMENTO COMPRA
-CREATE TABLE Compra(
-    cpf_participante VARCHAR2(11) REFERENCES Participante(cpf),
-    id_produto INTEGER REFERENCES Produto(id_produto),
-    quantidade INTEGER NOT NULL,
-    data_compra TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    PRIMARY KEY (cpf_participante, id_produto, data_compra)
+CREATE TABLE Compra (
+    cpf_participante VARCHAR2(11),
+    id_produto INT,
+    id_estande INT,
+    CONSTRAINT fk_compra_participante FOREIGN KEY (cpf_participante) REFERENCES Participante(cpf),
+    CONSTRAINT fk_compra_produto FOREIGN KEY (id_produto) REFERENCES Produto(id_produto),
+    CONSTRAINT fk_compra_estande FOREIGN KEY (id_estande) REFERENCES Estande(id_estande)
 );
 
 -- RELACIONAMENTO RESERVA
-CREATE TABLE Reserva(
-    id_estande INTEGER REFERENCES Estande(id_estande),
-    id_local INTEGER REFERENCES Local(id_local),
-    data_reserva DATE NOT NULL,
-    PRIMARY KEY (id_estande, id_local, data_reserva)
+CREATE TABLE Reserva (
+    cpf_organizador VARCHAR2(11),
+    geolocalizacao_local VARCHAR2(100),
+    id_atividade INT,
+    data_alocacao DATE,
+    CONSTRAINT fk_reserva_organizador FOREIGN KEY (cpf_organizador) REFERENCES Organizador(cpf_participante),
+    CONSTRAINT fk_reserva_local FOREIGN KEY (geolocalizacao_local) REFERENCES LocalEvento(geolocalizacao),
+    CONSTRAINT fk_reserva_atividade FOREIGN KEY (id_atividade) REFERENCES Atividade(id_atvd)
 );

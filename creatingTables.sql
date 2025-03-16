@@ -42,3 +42,19 @@ CREATE TABLE Organizador (
     CONSTRAINT fk_organizador_participante FOREIGN KEY (cpf_participante) REFERENCES Participante(cpf),
     CONSTRAINT fk_organizador_supervisor FOREIGN KEY (cpf_supervisor) REFERENCES Organizador(cpf_participante)
 );
+
+-- TABELA PRODUTO
+CREATE TABLE Produto (
+    id_produto INT PRIMARY KEY,
+    nome VARCHAR2(100),
+    preco DECIMAL(10,2),
+    categoria VARCHAR2(50),
+    estoque INT
+);
+
+-- TABELA ESTANDE
+CREATE TABLE Estande (
+    id_estande INT PRIMARY KEY,
+    nome VARCHAR2(100),
+    categoria VARCHAR2(50),
+);

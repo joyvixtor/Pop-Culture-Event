@@ -6,54 +6,49 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/participantes")
 public class ParticipanteController {
 
-    private final ParticipanteService participanteService;
-
     @Autowired
-    public ParticipanteController(ParticipanteService participanteService) {
-        this.participanteService = participanteService;
-    }
+    private ParticipanteService participanteService;
 
     @GetMapping
-    public ResponseEntity<List<Participante>> getAllParticipantes() {
-        List<Participante> participantes = participanteService.findAll();
-        return new ResponseEntity<>(participantes, HttpStatus.OK);
+    public ResponseEntity<List<Participante>> listarTodos() {
+        return ResponseEntity.ok(participanteService.listarTodos());
     }
 
     @GetMapping("/{cpf}")
-    public ResponseEntity<Participante> getParticipanteById(@PathVariable String cpf) {
-        return participanteService.findById(cpf)
-                .map(participante -> new ResponseEntity<>(participante, HttpStatus.OK))
-                .orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    public ResponseEntity<Participante> buscarPorCpf(@PathVariable String cpf) {
+        return participanteService.buscarPorCpf(cpf)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping("/buscar/nome")
+    public ResponseEntity<List<Participante>> buscarPorNome(@RequestParam String nome) {
+        return ResponseEntity.ok(participanteService.buscarPorNome(nome));
+    }
+
+    @GetMapping("/buscar/email")
+    public ResponseEntity<List<Participante>> buscarPorEmail(@RequestParam String email) {
+        return ResponseEntity.ok(participanteService.buscarPorEmail(email));
     }
 
     @PostMapping
-    public ResponseEntity<Participante> createParticipante(@RequestBody Participante participante) {
-        Participante savedParticipante = participanteService.save(participante);
-        return new ResponseEntity<>(savedParticipante, HttpStatus.CREATED);
+    public ResponseEntity<Participante> criar(@RequestBody Participante participante) {
+        return ResponseEntity.status(HttpStatus.CREATED).body(participanteService.salvar(participante));
     }
 
     @PutMapping("/{cpf}")
-    public ResponseEntity<Participante> updateParticipante(@PathVariable String cpf, @RequestBody Participante participante) {
-        if (!participanteService.findById(cpf).isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    public ResponseEntity<Participante> atualizar(@PathVariable String cpf, @RequestBody Participante participante) {
+        if (!participanteService.existePorCpf(cpf)) {
+            return ResponseEntity.notFound().build();
         }
         participante.setCpf(cpf);
-        return new ResponseEntity<>(participanteService.save(participante), HttpStatus.OK);
+        return ResponseEntity.ok(participanteService.salvar(participante));
     }
 
-    @DeleteMapping("/{cpf}")
-    public ResponseEntity<Void> deleteParticipante(@PathVariable String cpf) {
-        if (!participanteService.findById(cpf).isPresent()) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        participanteService.deleteById(cpf);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
 }

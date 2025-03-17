@@ -10,26 +10,34 @@ import java.util.Optional;
 @Service
 public class ParticipanteService {
 
-    private final ParticipanteRepository participanteRepository;
-
     @Autowired
-    public ParticipanteService(ParticipanteRepository participanteRepository) {
-        this.participanteRepository = participanteRepository;
-    }
+    private ParticipanteRepository participanteRepository;
 
-    public List<Participante> findAll() {
+    public List<Participante> listarTodos() {
         return participanteRepository.findAll();
     }
 
-    public Optional<Participante> findById(String cpf) {
+    public Optional<Participante> buscarPorCpf(String cpf) {
         return participanteRepository.findById(cpf);
     }
 
-    public Participante save(Participante participante) {
+    public List<Participante> buscarPorNome(String nome) {
+        return participanteRepository.findByNomeContainingIgnoreCase(nome);
+    }
+
+    public List<Participante> buscarPorEmail(String email) {
+        return participanteRepository.findByEmailContainingIgnoreCase(email);
+    }
+
+    public Participante salvar(Participante participante) {
         return participanteRepository.save(participante);
     }
 
-    public void deleteById(String cpf) {
+    public void excluir(String cpf) {
         participanteRepository.deleteById(cpf);
+    }
+
+    public boolean existePorCpf(String cpf) {
+        return participanteRepository.existsById(cpf);
     }
 }
